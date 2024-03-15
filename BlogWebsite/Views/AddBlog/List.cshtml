@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<BlogWebsite.Models.Domains.Tag>
+@{
+}
+ 
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Display All  Tags</h1>
+    </div>
+</div>
+
+<div class="container  py-5">
+    @if(Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>Name</th>
+                    <th>DisplayName</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tag in Model)
+                {
+                    <tr>
+                        <td>
+                            @tag.Id
+                        </td>
+                        <td>
+                            @tag.Name
+                        </td>
+                        <td>
+                            @tag.DisplayName
+                        </td>
+                        <td>
+                            <a asp-area="" asp-controller="AddBlog" asp-action="Edit" asp-route-id="@tag.Id">Edit</a>
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>
+            No tag's found!  
+        </p>
+    }
+
+</div>
